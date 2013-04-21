@@ -62,21 +62,21 @@ class AwsClient(val provider: AWSCredentialsProvider, val region: String) {
   /** get [[com.amazonaws.services.ec2.AmazonEC2Client]] object */
   def ec2 = {
     val client = new AmazonEC2Client(provider)
-    client.setEndpoint("ec2." + region + ".amazonaws.com")
+    client.setEndpoint("http://eucalyptus:8773/services/Eucalyptus/")
     client
   }
 
   /** get [[com.amazonaws.services.autoscaling.AmazonAutoScalingClient]] object */
   def asg = {
     val client = new AmazonAutoScalingClient(provider)
-    client.setEndpoint("autoscaling." + region + ".amazonaws.com")
+    client.setEndpoint("http://eucalyptus:8773/services/AutoScaling/")
     client
   }
 
   /** get [[com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancingClient]] object */
   def elb = {
     val client = new AmazonElasticLoadBalancingClient(provider)
-    client.setEndpoint("elasticloadbalancing." + region + ".amazonaws.com")
+    client.setEndpoint("http://eucalyptus:8773/services/LoadBalancing/")
     client
   }
 
@@ -86,7 +86,7 @@ class AwsClient(val provider: AWSCredentialsProvider, val region: String) {
     if (region == "us-east-1")
       client.setEndpoint("s3.amazonaws.com")
     else
-      client.setEndpoint("s3-" + region + ".amazonaws.com")
+      client.setEndpoint("http://eucalyptus:8773/services/Walrus/")
     client
   }
 
